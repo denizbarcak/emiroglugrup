@@ -17,17 +17,18 @@ export default function AdminLogin() {
 
     if (token) {
       try {
-        // Token'ı decode et ve role kontrolü yap
-        const tokenData = JSON.parse(atob(token.split("=")[1].split(".")[1]));
+        const tokenValue = token.split("=")[1];
+        const tokenData = JSON.parse(atob(tokenValue.split(".")[1]));
 
         if (tokenData.role === "admin") {
-          // Eğer geçerli bir admin token'ı varsa dashboard'a yönlendir
+          // Cookie'deki token'ı localStorage'a da kaydedelim
+          localStorage.setItem("token", tokenValue);
           router.push("/admin/dashboard");
         }
       } catch (error) {
         // Token geçersizse cookie'yi temizle
-        document.cookie =
-          "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        localStorage.removeItem("token"); // localStorage'ı da temizleyelim
       }
     }
   }, [router]);
