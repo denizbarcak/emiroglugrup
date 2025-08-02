@@ -9,35 +9,7 @@ export default function AdminLogin() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
-    // Eğer zaten dashboard sayfasındaysak, yönlendirme yapmayalım
-    if (window.location.pathname === "/admin/dashboard") {
-      return;
-    }
-
-    // Token kontrolü
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("token="));
-
-    if (token) {
-      try {
-        const tokenValue = token.split("=")[1];
-        const tokenData = JSON.parse(atob(tokenValue.split(".")[1]));
-
-        if (tokenData.role === "admin") {
-          // Cookie'deki token'ı localStorage'a da kaydedelim
-          localStorage.setItem("token", tokenValue);
-          // window.location.href kullanarak tam sayfa yönlendirme yapalım
-          window.location.href = "/admin/dashboard";
-        }
-      } catch (error) {
-        // Token geçersizse cookie'yi temizle
-        document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        localStorage.removeItem("token"); // localStorage'ı da temizleyelim
-      }
-    }
-  }, []);
+  // Login sayfası yüklendiğinde artık otomatik yönlendirme yapmıyoruz
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,10 +36,8 @@ export default function AdminLogin() {
       document.cookie = `token=${data.token}; path=/; max-age=86400`;
       localStorage.setItem("token", data.token);
 
-      // Sayfayı yeniden yükleyerek dashboard'a yönlendir
-      setTimeout(() => {
-        window.location.replace("/admin/dashboard");
-      }, 100);
+      // Başarılı login sonrası direkt dashboard'a yönlendir
+      window.location.href = "/admin/dashboard";
     } catch (error) {
       console.error("Login error:", error);
       setError("Giriş başarısız. Lütfen bilgilerinizi kontrol edin.");
