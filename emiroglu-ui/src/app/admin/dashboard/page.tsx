@@ -77,12 +77,35 @@ export default function AdminDashboard() {
   useEffect(() => {
     // Token kontrolü
     const token = localStorage.getItem("token");
-    if (!token) {
-      window.location.href = "/admin";
+    const cookieToken = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("token="));
+
+    if (!token || !cookieToken) {
+      // Tüm token'ları temizle
+      localStorage.removeItem("token");
+      document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      
+      // Ana sayfaya yönlendir
+      window.location.replace("/admin");
       return;
     }
 
-    fetchCatalogs();
+    try {
+      // Token'ı decode et ve kontrol et
+      const tokenData = JSON.parse(atob(token.split(".")[1]));
+      if (tokenData.role !== "admin") {
+        throw new Error("Invalid role");
+      }
+      
+      // Token geçerliyse verileri yükle
+      fetchCatalogs();
+    } catch (error) {
+      // Token geçersizse temizle ve yönlendir
+      localStorage.removeItem("token");
+      document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      window.location.replace("/admin");
+    }
   }, []);
 
   return (

@@ -9,7 +9,7 @@ export default function AdminLogin() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  // Login sayfası yüklendiğinde artık otomatik yönlendirme yapmıyoruz
+  // Login sayfasında hiç token kontrolü yapmıyoruz, sadece form submit'inde kontrol var
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
