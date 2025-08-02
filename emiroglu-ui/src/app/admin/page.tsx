@@ -53,8 +53,9 @@ export default function AdminLogin() {
 
       const data = await response.json();
 
-      // Token'ı cookie'ye kaydet
+      // Token'ı hem cookie hem localStorage'a kaydet
       document.cookie = `token=${data.token}; path=/; max-age=86400`;
+      localStorage.setItem("token", data.token);
 
       // Başarılı login sonrası dashboard'a yönlendir
       window.location.href = "/admin/dashboard";
