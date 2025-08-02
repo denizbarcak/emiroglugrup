@@ -67,6 +67,7 @@ export default function CatalogModal({
   const [image, setImage] = useState<File | null>(null);
   const [currentFileName, setCurrentFileName] = useState<string>("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const resetForm = () => {
     setName("");
@@ -93,6 +94,9 @@ export default function CatalogModal({
       setError("Lütfen tüm alanları doldurun");
       return;
     }
+
+    setIsLoading(true);
+    setError("");
 
     try {
       if (!process.env.NEXT_PUBLIC_API_URL) {
@@ -150,6 +154,8 @@ export default function CatalogModal({
           ? "Katalog güncellenirken bir hata oluştu. Lütfen tekrar deneyin."
           : "Katalog eklenirken bir hata oluştu. Lütfen tekrar deneyin."
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -414,9 +420,19 @@ export default function CatalogModal({
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              disabled={isLoading}
+              className={`px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center ${
+                isLoading ? 'opacity-70 cursor-not-allowed' : ''
+              }`}
             >
-              {editingCatalog ? "Güncelle" : "Kaydet"}
+              {isLoading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  {editingCatalog ? "Güncelleniyor..." : "Kaydediliyor..."}
+                </>
+              ) : (
+                editingCatalog ? "Güncelle" : "Kaydet"
+              )}
             </button>
           </div>
         </form>
