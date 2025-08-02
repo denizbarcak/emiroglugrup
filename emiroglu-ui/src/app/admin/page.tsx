@@ -10,6 +10,11 @@ export default function AdminLogin() {
   const router = useRouter();
 
   useEffect(() => {
+    // Eğer zaten dashboard sayfasındaysak, yönlendirme yapmayalım
+    if (window.location.pathname === "/admin/dashboard") {
+      return;
+    }
+
     // Token kontrolü
     const token = document.cookie
       .split("; ")
@@ -23,7 +28,8 @@ export default function AdminLogin() {
         if (tokenData.role === "admin") {
           // Cookie'deki token'ı localStorage'a da kaydedelim
           localStorage.setItem("token", tokenValue);
-          router.push("/admin/dashboard");
+          // window.location.href kullanarak tam sayfa yönlendirme yapalım
+          window.location.href = "/admin/dashboard";
         }
       } catch (error) {
         // Token geçersizse cookie'yi temizle
@@ -31,7 +37,7 @@ export default function AdminLogin() {
         localStorage.removeItem("token"); // localStorage'ı da temizleyelim
       }
     }
-  }, [router]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
