@@ -58,7 +58,7 @@ export default function AdminLogin() {
       localStorage.setItem("token", data.token);
 
       // Başarılı login sonrası dashboard'a yönlendir
-      window.location.href = "/admin/dashboard";
+      router.push("/admin/dashboard");
     } catch (error) {
       console.error("Login error:", error);
       setError("Giriş başarısız. Lütfen bilgilerinizi kontrol edin.");
