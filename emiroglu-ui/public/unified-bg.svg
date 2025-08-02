@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="2000" viewBox="0 0 1440 2000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ana arka plan rengi -->
+  <rect width="1440" height="2000" fill="#F8FAFF"/>
+  
+  <!-- Yumuşak dalga desenleri -->
+  <path d="M0 0 L1440 0 L1440 2000 L0 2000 L0 0" fill="#EEF2FF" fill-opacity="0.4"/>
+  
+  <!-- Büyük yumuşak daireler -->
+  <circle cx="0" cy="400" r="600" fill="#E0E7FF" fill-opacity="0.3"/>
+  <circle cx="1440" cy="800" r="500" fill="#EEF2FF" fill-opacity="0.5"/>
+  <circle cx="720" cy="200" r="400" fill="#F5F3FF" fill-opacity="0.4"/>
+  
+  <!-- Orta boy daireler -->
+  <circle cx="200" cy="600" r="300" fill="#F0F9FF" fill-opacity="0.3"/>
+  <circle cx="1200" cy="400" r="250" fill="#EDE9FE" fill-opacity="0.3"/>
+  
+  <!-- İnce bağlantı çizgileri -->
+  <path d="M0 300 Q 720 500 1440 300" stroke="#E0E7FF" stroke-width="1"/>
+  <path d="M0 600 Q 720 800 1440 600" stroke="#EDE9FE" stroke-width="1"/>
+  <path d="M0 900 Q 720 1100 1440 900" stroke="#F0F9FF" stroke-width="1"/>
+  
+  <!-- Küçük noktalar -->
+  <g fill="#C7D2FE" fill-opacity="0.2">
+    <circle cx="200" cy="200" r="2"/>
+    <circle cx="400" cy="400" r="2"/>
+    <circle cx="600" cy="300" r="2"/>
+    <circle cx="800" cy="500" r="2"/>
+    <circle cx="1000" cy="400" r="2"/>
+    <circle cx="1200" cy="200" r="2"/>
+  </g>
+  
+  <!-- Üst kısım için ekstra efektler (hero bölümü için) -->
+  <rect width="1440" height="800" fill="url(#heroGrad)"/>
+  <defs>
+    <linearGradient id="heroGrad" x1="720" y1="0" x2="720" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" style="stop-color:#EEF2FF;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#EEF2FF;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+</svg>

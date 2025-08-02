@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="1000" viewBox="0 0 1440 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient arka plan -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:0.2" />
+      <stop offset="50%" style="stop-color:#7C3AED;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:0.2" />
+    </linearGradient>
+    <radialGradient id="grad2" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:0.1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Ana arka plan -->
+  <rect width="1440" height="1000" fill="#EEF2FF"/>
+  <rect width="1440" height="1000" fill="url(#grad1)"/>
+  
+  <!-- Büyük renkli daireler -->
+  <circle cx="0" cy="0" r="600" fill="#4F46E5" fill-opacity="0.1"/>
+  <circle cx="1440" cy="500" r="500" fill="#7C3AED" fill-opacity="0.1"/>
+  <circle cx="720" cy="1000" r="600" fill="#EC4899" fill-opacity="0.1"/>
+  
+  <!-- Dekoratif şekiller -->
+  <circle cx="200" cy="300" r="100" fill="#60A5FA" fill-opacity="0.2"/>
+  <circle cx="1200" cy="600" r="150" fill="#818CF8" fill-opacity="0.2"/>
+  <circle cx="600" cy="800" r="120" fill="#F472B6" fill-opacity="0.2"/>
+  
+  <!-- Bağlantı noktaları -->
+  <g fill="#6366F1" fill-opacity="0.4">
+    <circle cx="300" cy="200" r="4"/>
+    <circle cx="500" cy="400" r="4"/>
+    <circle cx="700" cy="300" r="4"/>
+    <circle cx="900" cy="500" r="4"/>
+    <circle cx="1100" cy="400" r="4"/>
+  </g>
+  
+  <!-- Bağlantı çizgileri -->
+  <path d="M300 200 Q 400 300 500 400" stroke="#6366F1" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M500 400 Q 600 350 700 300" stroke="#6366F1" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M700 300 Q 800 400 900 500" stroke="#6366F1" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M900 500 Q 1000 450 1100 400" stroke="#6366F1" stroke-width="2" stroke-opacity="0.2"/>
+  
+  <!-- Gradient overlay -->
+  <rect width="1440" height="1000" fill="url(#grad2)"/>
+</svg>
