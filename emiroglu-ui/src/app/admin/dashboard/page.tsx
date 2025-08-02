@@ -78,7 +78,7 @@ export default function AdminDashboard() {
     // Token kontrolü
     const token = localStorage.getItem("token");
     if (!token) {
-      router.push("/admin");
+      window.location.href = "/admin";
       return;
     }
 
