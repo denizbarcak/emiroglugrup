@@ -83,7 +83,7 @@ export default function AdminDashboard() {
     }
 
     fetchCatalogs();
-  }, [router]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative">
