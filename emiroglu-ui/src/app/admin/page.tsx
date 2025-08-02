@@ -64,8 +64,10 @@ export default function AdminLogin() {
       document.cookie = `token=${data.token}; path=/; max-age=86400`;
       localStorage.setItem("token", data.token);
 
-      // Başarılı login sonrası dashboard'a yönlendir
-      router.push("/admin/dashboard");
+      // Sayfayı yeniden yükleyerek dashboard'a yönlendir
+      setTimeout(() => {
+        window.location.replace("/admin/dashboard");
+      }, 100);
     } catch (error) {
       console.error("Login error:", error);
       setError("Giriş başarısız. Lütfen bilgilerinizi kontrol edin.");
